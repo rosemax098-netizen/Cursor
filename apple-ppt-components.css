@@ -1,0 +1,587 @@
+/* 苹果风格PPT设计组件库 */
+
+/* ===== 基础重置 ===== */
+.apple-ppt-reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== 字体系统 ===== */
+.apple-ppt-font {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+/* 标题字体 */
+.apple-ppt-title-large {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.apple-ppt-title-medium {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.apple-ppt-title-small {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+}
+
+/* 正文字体 */
+.apple-ppt-text-large {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.apple-ppt-text-medium {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.apple-ppt-text-small {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* ===== 配色系统 ===== */
+.apple-ppt-bg-primary {
+    background-color: #f5f5f7;
+}
+
+.apple-ppt-bg-dark {
+    background-color: #000;
+}
+
+.apple-ppt-text-primary {
+    color: #fff;
+}
+
+.apple-ppt-text-secondary {
+    color: #ccc;
+}
+
+.apple-ppt-accent {
+    color: #0071e3;
+}
+
+.apple-ppt-warning {
+    color: #FF9500;
+}
+
+.apple-ppt-success {
+    color: #34C759;
+}
+
+/* ===== 容器组件 ===== */
+.apple-ppt-container {
+    width: 90vw;
+    height: 50.625vw;
+    max-width: 1280px;
+    max-height: 720px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.apple-ppt-slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    padding: 40px 30px 60px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.apple-ppt-slide.active {
+    opacity: 1;
+}
+
+/* ===== 信息框组件 ===== */
+.apple-ppt-info-box {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-left: 4px solid #0071e3;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    max-width: 80%;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.apple-ppt-info-box:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.apple-ppt-info-box.warning {
+    border-left-color: #FF9500;
+}
+
+.apple-ppt-info-box.success {
+    border-left-color: #34C759;
+}
+
+.apple-ppt-info-box.error {
+    border-left-color: #FF3B30;
+}
+
+/* ===== 按钮组件 ===== */
+.apple-ppt-btn {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 12px 24px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin: 8px;
+    font-family: inherit;
+}
+
+.apple-ppt-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+
+.apple-ppt-btn:active {
+    transform: scale(0.98);
+}
+
+.apple-ppt-btn.primary {
+    background: #0071e3;
+    border-color: #0071e3;
+}
+
+.apple-ppt-btn.primary:hover {
+    background: #0077ed;
+}
+
+.apple-ppt-btn.secondary {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.apple-ppt-btn.secondary:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.apple-ppt-btn.small {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.apple-ppt-btn.large {
+    padding: 16px 32px;
+    font-size: 18px;
+}
+
+/* ===== 导航按钮组件 ===== */
+.apple-ppt-nav-btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.apple-ppt-nav-btn:hover {
+    background: #0071e3;
+    transform: scale(1.1);
+}
+
+.apple-ppt-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.apple-ppt-nav-btn.prev {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.apple-ppt-nav-btn.next {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.apple-ppt-nav-btn.bottom-prev {
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-120px);
+}
+
+.apple-ppt-nav-btn.bottom-next {
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(70px);
+}
+
+/* ===== 页码指示器组件 ===== */
+.apple-ppt-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(20px);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.apple-ppt-indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.apple-ppt-indicator-dot:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+.apple-ppt-indicator-dot.active {
+    width: 20px;
+    border-radius: 3px;
+    background: #0071e3;
+}
+
+/* ===== 列表组件 ===== */
+.apple-ppt-list {
+    list-style: none;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.apple-ppt-list li {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.apple-ppt-list li::before {
+    content: "•";
+    color: #0071e3;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.apple-ppt-list.compact li {
+    font-size: 16px;
+    margin: 4px 0;
+}
+
+/* ===== 图片组件 ===== */
+.apple-ppt-image {
+    max-width: 85%;
+    max-height: 60vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.apple-ppt-image:hover {
+    transform: scale(1.02);
+}
+
+/* ===== 卡片组件 ===== */
+.apple-ppt-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 12px 0;
+    max-width: 80%;
+    transition: all 0.2s ease;
+}
+
+.apple-ppt-card:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+/* ===== 分割线组件 ===== */
+.apple-ppt-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 20px 0;
+}
+
+.apple-ppt-divider.vertical {
+    width: 1px;
+    height: 100%;
+    margin: 0 20px;
+}
+
+/* ===== 标签组件 ===== */
+.apple-ppt-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    margin: 4px;
+}
+
+.apple-ppt-tag.primary {
+    background: #0071e3;
+    border-color: #0071e3;
+}
+
+.apple-ppt-tag.warning {
+    background: #FF9500;
+    border-color: #FF9500;
+}
+
+.apple-ppt-tag.success {
+    background: #34C759;
+    border-color: #34C759;
+}
+
+/* ===== 进度条组件 ===== */
+.apple-ppt-progress {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+
+.apple-ppt-progress-bar {
+    height: 100%;
+    background: #0071e3;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* ===== 工具提示组件 ===== */
+.apple-ppt-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.apple-ppt-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(20px);
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 14px;
+}
+
+.apple-ppt-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 768px) {
+    .apple-ppt-container {
+        width: 95vw;
+        height: 53.4375vw;
+    }
+    
+    .apple-ppt-title-large {
+        font-size: 36px;
+    }
+    
+    .apple-ppt-title-medium {
+        font-size: 28px;
+    }
+    
+    .apple-ppt-title-small {
+        font-size: 24px;
+    }
+    
+    .apple-ppt-text-large {
+        font-size: 16px;
+    }
+    
+    .apple-ppt-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .apple-ppt-info-box,
+    .apple-ppt-card {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .apple-ppt-slide {
+        padding: 20px 15px 40px 15px;
+    }
+    
+    .apple-ppt-title-large {
+        font-size: 28px;
+    }
+    
+    .apple-ppt-title-medium {
+        font-size: 24px;
+    }
+    
+    .apple-ppt-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+/* ===== 动画类 ===== */
+.apple-ppt-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.apple-ppt-slide-up {
+    animation: slideUp 0.4s ease-out;
+}
+
+.apple-ppt-scale-in {
+    animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===== 辅助类 ===== */
+.apple-ppt-text-center {
+    text-align: center;
+}
+
+.apple-ppt-text-left {
+    text-align: left;
+}
+
+.apple-ppt-text-right {
+    text-align: right;
+}
+
+.apple-ppt-mt-0 { margin-top: 0; }
+.apple-ppt-mt-1 { margin-top: 8px; }
+.apple-ppt-mt-2 { margin-top: 12px; }
+.apple-ppt-mt-3 { margin-top: 20px; }
+.apple-ppt-mt-4 { margin-top: 30px; }
+
+.apple-ppt-mb-0 { margin-bottom: 0; }
+.apple-ppt-mb-1 { margin-bottom: 8px; }
+.apple-ppt-mb-2 { margin-bottom: 12px; }
+.apple-ppt-mb-3 { margin-bottom: 20px; }
+.apple-ppt-mb-4 { margin-bottom: 30px; }
+
+.apple-ppt-ml-0 { margin-left: 0; }
+.apple-ppt-ml-1 { margin-left: 8px; }
+.apple-ppt-ml-2 { margin-left: 12px; }
+.apple-ppt-ml-3 { margin-left: 20px; }
+
+.apple-ppt-mr-0 { margin-right: 0; }
+.apple-ppt-mr-1 { margin-right: 8px; }
+.apple-ppt-mr-2 { margin-right: 12px; }
+.apple-ppt-mr-3 { margin-right: 20px; }
+
+.apple-ppt-p-0 { padding: 0; }
+.apple-ppt-p-1 { padding: 8px; }
+.apple-ppt-p-2 { padding: 12px; }
+.apple-ppt-p-3 { padding: 20px; }
+.apple-ppt-p-4 { padding: 30px; }
+
+.apple-ppt-w-full { width: 100%; }
+.apple-ppt-w-auto { width: auto; }
+.apple-ppt-h-full { height: 100%; }
+.apple-ppt-h-auto { height: auto; }
+
+.apple-ppt-flex { display: flex; }
+.apple-ppt-flex-col { flex-direction: column; }
+.apple-ppt-flex-row { flex-direction: row; }
+.apple-ppt-items-center { align-items: center; }
+.apple-ppt-justify-center { justify-content: center; }
+.apple-ppt-justify-between { justify-content: space-between; }
+
+.apple-ppt-hidden { display: none; }
+.apple-ppt-visible { display: block; }

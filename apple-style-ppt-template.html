@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苹果风格PPT模板</title>
+    <style>
+        /* 全局重置和基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: #f5f5f7;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* PPT容器 */
+        .ppt-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 幻灯片容器 */
+        .slide-container {
+            width: 90vw;
+            height: 50.625vw;
+            max-width: 1280px;
+            max-height: 720px;
+            position: relative;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        /* 幻灯片 */
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            padding: 40px 30px 60px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* 标题样式 */
+        .slide-title {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #ccc;
+        }
+
+        .content-title {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* 正文样式 */
+        .slide-content {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .slide-description {
+            font-size: 16px;
+            font-weight: 300;
+            color: #ccc;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* 信息框样式 */
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-left: 4px solid #0071e3;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            max-width: 80%;
+            width: 100%;
+        }
+
+        .info-box.warning {
+            border-left-color: #FF9500;
+        }
+
+        .info-box.success {
+            border-left-color: #34C759;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            padding: 12px 24px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: #0071e3;
+            border-color: #0071e3;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+        }
+
+        /* 图片样式 */
+        .slide-image {
+            max-width: 85%;
+            max-height: 60vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            margin: 20px 0;
+        }
+
+        /* 列表样式 */
+        .slide-list {
+            list-style: none;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .slide-list li {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.5;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .slide-list li::before {
+            content: "•";
+            color: #0071e3;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 页码指示器 */
+        .page-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .indicator-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .indicator-dot.active {
+            width: 20px;
+            border-radius: 3px;
+            background: #0071e3;
+        }
+
+        /* 外部翻页按钮 */
+        .nav-button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .nav-button:hover {
+            background: #0071e3;
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-button.prev {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-button.next {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-button.bottom-prev {
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-120px);
+        }
+
+        .nav-button.bottom-next {
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(70px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .slide-container {
+                width: 95vw;
+                height: 53.4375vw;
+            }
+            
+            .slide-title {
+                font-size: 36px;
+            }
+            
+            .content-title {
+                font-size: 28px;
+            }
+            
+            .slide-content {
+                font-size: 16px;
+            }
+            
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+
+        /* 键盘导航提示 */
+        .keyboard-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #ccc;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="ppt-container">
+        <div class="slide-container">
+            <!-- 幻灯片1：标题页 -->
+            <div class="slide active" data-slide="1">
+                <h1 class="slide-title">苹果风格PPT设计</h1>
+                <p class="slide-subtitle">简洁 · 优雅 · 现代</p>
+                <div class="info-box">
+                    <p class="slide-content">采用苹果官方设计语言，追求极简主义与功能性的完美平衡</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片2：设计原则 -->
+            <div class="slide" data-slide="2">
+                <h2 class="content-title">核心设计原则</h2>
+                <ul class="slide-list">
+                    <li>极简主义：去除冗余，突出核心内容</li>
+                    <li>功能性：每个元素都有明确的目的</li>
+                    <li>一致性：统一的设计语言和交互模式</li>
+                    <li>优雅性：精致的细节和流畅的动画</li>
+                </ul>
+                <div class="info-box">
+                    <p class="slide-description">设计原则确保用户体验的一致性和专业性</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片3：配色系统 -->
+            <div class="slide" data-slide="3">
+                <h2 class="content-title">配色系统</h2>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 80%;">
+                    <div class="info-box" style="background: #f5f5f7; color: #000; border-left-color: #f5f5f7;">
+                        <strong>背景色</strong><br>#f5f5f7
+                    </div>
+                    <div class="info-box" style="background: #0071e3; border-left-color: #0071e3;">
+                        <strong>强调色</strong><br>#0071e3
+                    </div>
+                    <div class="info-box" style="background: #FF9500; border-left-color: #FF9500;">
+                        <strong>警告色</strong><br>#FF9500
+                    </div>
+                    <div class="info-box" style="background: #34C759; border-left-color: #34C759;">
+                        <strong>成功色</strong><br>#34C759
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片4：字体系统 -->
+            <div class="slide" data-slide="4">
+                <h2 class="content-title">字体系统</h2>
+                <div style="text-align: left; max-width: 80%;">
+                    <div style="margin: 20px 0;">
+                        <div style="font-size: 56px; font-weight: 700; letter-spacing: -0.03em;">标题页主标题 56px</div>
+                        <div style="font-size: 16px; color: #ccc; margin-top: 8px;">粗体700，字间距-0.03em</div>
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <div style="font-size: 36px; font-weight: 700; letter-spacing: -0.02em;">内容页标题 36px</div>
+                        <div style="font-size: 16px; color: #ccc; margin-top: 8px;">粗体700，字间距-0.02em</div>
+                    </div>
+                    <div style="margin: 20px 0;">
+                        <div style="font-size: 18px; font-weight: 300; line-height: 1.5;">正文内容 18px</div>
+                        <div style="font-size: 16px; color: #ccc; margin-top: 8px;">细体300，行高1.5</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片5：布局规范 -->
+            <div class="slide" data-slide="5">
+                <h2 class="content-title">布局规范</h2>
+                <div class="info-box">
+                    <strong>容器尺寸：</strong>16:9比例，最大1280×720px
+                </div>
+                <div class="info-box">
+                    <strong>间距系统：</strong>页面内边距40px，元素间距20px/12px/8px
+                </div>
+                <div class="info-box">
+                    <strong>圆角规范：</strong>容器12px，元素8px，小元素4px
+                </div>
+                <div class="info-box">
+                    <strong>边框一致性：</strong>信息框4px，其他元素1px
+                </div>
+            </div>
+
+            <!-- 幻灯片6：交互设计 -->
+            <div class="slide" data-slide="6">
+                <h2 class="content-title">交互设计</h2>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn">普通按钮</button>
+                    <button class="btn btn-primary">主要按钮</button>
+                    <button class="btn" style="background: rgba(255,255,255,0.2);">悬停效果</button>
+                </div>
+                <div class="info-box">
+                    <p>按钮采用胶囊形状，支持毛玻璃效果和流畅动画</p>
+                </div>
+                <div class="info-box warning">
+                    <p>警告信息框使用橙色边框</p>
+                </div>
+                <div class="info-box success">
+                    <p>成功信息框使用绿色边框</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片7：设计检查清单 -->
+            <div class="slide" data-slide="7">
+                <h2 class="content-title">设计检查清单</h2>
+                <ul class="slide-list">
+                    <li>✅ 使用苹果标准色彩</li>
+                    <li>✅ 字体为SF Pro系列</li>
+                    <li>✅ 圆角统一(12px/8px/4px)</li>
+                    <li>✅ 毛玻璃效果</li>
+                    <li>✅ 动画时长合适(0.2s-0.6s)</li>
+                    <li>✅ 页面比例16:9</li>
+                    <li>✅ 交互流畅自然</li>
+                    <li>✅ 信息层级清晰</li>
+                </ul>
+            </div>
+
+            <!-- 幻灯片8：总结 -->
+            <div class="slide" data-slide="8">
+                <h1 class="slide-title">设计总结</h1>
+                <p class="slide-subtitle">追求完美，注重细节</p>
+                <div class="info-box">
+                    <p class="slide-content">通过严格的设计规范和一致的用户体验，创造专业、优雅的演示文稿</p>
+                </div>
+                <div style="margin-top: 30px;">
+                    <button class="btn btn-primary">开始使用</button>
+                </div>
+            </div>
+
+            <!-- 页码指示器 -->
+            <div class="page-indicator">
+                <div class="indicator-dot active" data-slide="1"></div>
+                <div class="indicator-dot" data-slide="2"></div>
+                <div class="indicator-dot" data-slide="3"></div>
+                <div class="indicator-dot" data-slide="4"></div>
+                <div class="indicator-dot" data-slide="5"></div>
+                <div class="indicator-dot" data-slide="6"></div>
+                <div class="indicator-dot" data-slide="7"></div>
+                <div class="indicator-dot" data-slide="8"></div>
+            </div>
+        </div>
+
+        <!-- 外部翻页按钮 -->
+        <button class="nav-button prev" id="prevBtn">‹</button>
+        <button class="nav-button next" id="nextBtn">›</button>
+        <button class="nav-button bottom-prev" id="bottomPrevBtn">‹</button>
+        <button class="nav-button bottom-next" id="bottomNextBtn">›</button>
+
+        <!-- 键盘导航提示 -->
+        <div class="keyboard-hint">
+            ← → 翻页 | 空格 播放
+        </div>
+    </div>
+
+    <script>
+        class AppleStylePPT {
+            constructor() {
+                this.currentSlide = 1;
+                this.totalSlides = 8;
+                this.isPlaying = false;
+                this.autoPlayInterval = null;
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateNavigation();
+            }
+
+            bindEvents() {
+                // 翻页按钮事件
+                document.getElementById('prevBtn').addEventListener('click', () => this.prevSlide());
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
+                document.getElementById('bottomPrevBtn').addEventListener('click', () => this.prevSlide());
+                document.getElementById('bottomNextBtn').addEventListener('click', () => this.nextSlide());
+
+                // 指示器点击事件
+                document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index + 1));
+                });
+
+                // 键盘事件
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.prevSlide();
+                            break;
+                        case 'ArrowRight':
+                        case ' ':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.goToSlide(1);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.goToSlide(this.totalSlides);
+                            break;
+                    }
+                });
+
+                // 触摸事件支持
+                let startX = 0;
+                let endX = 0;
+
+                document.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                document.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    this.handleSwipe();
+                });
+
+                // 鼠标滚轮事件
+                document.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    if (e.deltaY > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }, { passive: false });
+            }
+
+            handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+
+            goToSlide(slideNumber) {
+                if (slideNumber < 1 || slideNumber > this.totalSlides) return;
+
+                // 隐藏当前幻灯片
+                document.querySelector(`.slide[data-slide="${this.currentSlide}"]`).classList.remove('active');
+                
+                // 显示目标幻灯片
+                document.querySelector(`.slide[data-slide="${slideNumber}"]`).classList.add('active');
+                
+                // 更新指示器
+                document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index + 1 === slideNumber);
+                });
+
+                this.currentSlide = slideNumber;
+                this.updateNavigation();
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 1) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            updateNavigation() {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const bottomPrevBtn = document.getElementById('bottomPrevBtn');
+                const bottomNextBtn = document.getElementById('bottomNextBtn');
+
+                // 更新按钮状态
+                prevBtn.disabled = this.currentSlide === 1;
+                nextBtn.disabled = this.currentSlide === this.totalSlides;
+                bottomPrevBtn.disabled = this.currentSlide === 1;
+                bottomNextBtn.disabled = this.currentSlide === this.totalSlides;
+            }
+        }
+
+        // 初始化PPT
+        document.addEventListener('DOMContentLoaded', () => {
+            new AppleStylePPT();
+        });
+    </script>
+</body>
+</html>
