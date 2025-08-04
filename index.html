@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苹果风格PPT演示</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <!-- PPT主容器 -->
+    <div class="ppt-container">
+        <!-- 幻灯片包装器 -->
+        <div class="slides-wrapper">
+            <!-- 第1页：标题页 -->
+            <div class="slide active" data-slide="1">
+                <div class="slide-content title-slide">
+                    <h1 class="main-title">苹果风格PPT</h1>
+                    <p class="subtitle">极简设计，优雅体验</p>
+                    <div class="company-info">
+                        <p class="company-name">Apple Design Language</p>
+                        <p class="date">2024年设计规范</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第2页：设计原则 -->
+            <div class="slide" data-slide="2">
+                <div class="slide-content">
+                    <h2 class="slide-title">核心设计原则</h2>
+                    <div class="principle-grid">
+                        <div class="principle-card">
+                            <div class="principle-icon">🎨</div>
+                            <h3>极简主义</h3>
+                            <p>去除多余元素，专注核心内容</p>
+                        </div>
+                        <div class="principle-card">
+                            <div class="principle-icon">⚡</div>
+                            <h3>功能性</h3>
+                            <p>每个元素都有明确的目的</p>
+                        </div>
+                        <div class="principle-card">
+                            <div class="principle-icon">🔄</div>
+                            <h3>一致性</h3>
+                            <p>统一的视觉语言和交互模式</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第3页：配色系统 -->
+            <div class="slide" data-slide="3">
+                <div class="slide-content">
+                    <h2 class="slide-title">配色系统</h2>
+                    <div class="color-showcase">
+                        <div class="color-group">
+                            <h3>主色调</h3>
+                            <div class="color-palette">
+                                <div class="color-item">
+                                    <div class="color-circle" style="background: #f5f5f7;"></div>
+                                    <span>背景色</span>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-circle" style="background: #000;"></div>
+                                    <span>容器背景</span>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-circle" style="background: #0071e3;"></div>
+                                    <span>苹果蓝</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="color-group">
+                            <h3>功能色</h3>
+                            <div class="color-palette">
+                                <div class="color-item">
+                                    <div class="color-circle" style="background: #34C759;"></div>
+                                    <span>成功</span>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-circle" style="background: #FF9500;"></div>
+                                    <span>警告</span>
+                                </div>
+                                <div class="color-item">
+                                    <div class="color-circle" style="background: #FF3B30;"></div>
+                                    <span>错误</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第4页：字体系统 -->
+            <div class="slide" data-slide="4">
+                <div class="slide-content">
+                    <h2 class="slide-title">字体系统</h2>
+                    <div class="typography-showcase">
+                        <div class="typography-item">
+                            <div class="text-sample main-title-sample">主标题样式</div>
+                            <div class="text-info">56px, 粗体700</div>
+                        </div>
+                        <div class="typography-item">
+                            <div class="text-sample slide-title-sample">内容页标题</div>
+                            <div class="text-info">36px, 粗体700</div>
+                        </div>
+                        <div class="typography-item">
+                            <div class="text-sample subtitle-sample">副标题样式</div>
+                            <div class="text-info">28px, 中粗600</div>
+                        </div>
+                        <div class="typography-item">
+                            <div class="text-sample body-sample">正文内容样式</div>
+                            <div class="text-info">18px, 细体300</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第5页：组件展示 -->
+            <div class="slide" data-slide="5">
+                <div class="slide-content">
+                    <h2 class="slide-title">界面组件</h2>
+                    <div class="components-showcase">
+                        <div class="component-group">
+                            <h3>按钮样式</h3>
+                            <div class="button-showcase">
+                                <button class="apple-button primary">主要按钮</button>
+                                <button class="apple-button secondary">次要按钮</button>
+                                <button class="apple-button outline">边框按钮</button>
+                            </div>
+                        </div>
+                        <div class="component-group">
+                            <h3>信息框</h3>
+                            <div class="info-boxes">
+                                <div class="info-box info">
+                                    <strong>信息提示：</strong>这是一个信息类型的提示框
+                                </div>
+                                <div class="info-box success">
+                                    <strong>成功提示：</strong>操作已成功完成
+                                </div>
+                                <div class="info-box warning">
+                                    <strong>警告提示：</strong>请注意相关操作风险
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第6页：图片展示 -->
+            <div class="slide" data-slide="6">
+                <div class="slide-content">
+                    <h2 class="slide-title">图片展示</h2>
+                    <div class="image-showcase">
+                        <div class="image-container">
+                            <img src="https://via.placeholder.com/800x600/000000/FFFFFF?text=Apple+Style+Design" alt="苹果风格设计示例" class="showcase-image">
+                        </div>
+                        <p class="image-caption">苹果风格设计追求简洁与功能的完美平衡</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第7页：布局系统 -->
+            <div class="slide" data-slide="7">
+                <div class="slide-content">
+                    <h2 class="slide-title">布局系统</h2>
+                    <div class="layout-showcase">
+                        <div class="layout-item">
+                            <h3>16:9比例</h3>
+                            <div class="layout-demo aspect-ratio">
+                                <span>1280×720px</span>
+                            </div>
+                        </div>
+                        <div class="layout-item">
+                            <h3>间距系统</h3>
+                            <div class="spacing-demo">
+                                <div class="spacing-large">20px</div>
+                                <div class="spacing-medium">12px</div>
+                                <div class="spacing-small">8px</div>
+                            </div>
+                        </div>
+                        <div class="layout-item">
+                            <h3>圆角规范</h3>
+                            <div class="radius-demo">
+                                <div class="radius-large">12px</div>
+                                <div class="radius-medium">8px</div>
+                                <div class="radius-small">4px</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第8页：总结 -->
+            <div class="slide" data-slide="8">
+                <div class="slide-content">
+                    <h2 class="slide-title">设计检查清单</h2>
+                    <div class="checklist">
+                        <div class="checklist-item completed">
+                            <span class="check-icon">✅</span>
+                            <span class="check-text">使用苹果标准色彩</span>
+                        </div>
+                        <div class="checklist-item completed">
+                            <span class="check-icon">✅</span>
+                            <span class="check-text">SF Pro字体系列</span>
+                        </div>
+                        <div class="checklist-item completed">
+                            <span class="check-icon">✅</span>
+                            <span class="check-text">统一圆角(12px/8px/4px)</span>
+                        </div>
+                        <div class="checklist-item completed">
+                            <span class="check-icon">✅</span>
+                            <span class="check-text">毛玻璃效果</span>
+                        </div>
+                        <div class="checklist-item completed">
+                            <span class="check-icon">✅</span>
+                            <span class="check-text">16:9页面比例</span>
+                        </div>
+                        <div class="checklist-item completed">
+                            <span class="check-icon">✅</span>
+                            <span class="check-text">统一边框宽度(4px信息框)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页码指示器 -->
+        <div class="pagination-indicators">
+            <div class="indicator active" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+            <div class="indicator" data-slide="4"></div>
+            <div class="indicator" data-slide="5"></div>
+            <div class="indicator" data-slide="6"></div>
+            <div class="indicator" data-slide="7"></div>
+            <div class="indicator" data-slide="8"></div>
+        </div>
+    </div>
+
+    <!-- 外部翻页控制 -->
+    <div class="external-controls">
+        <!-- 侧边按钮 -->
+        <button class="nav-button nav-prev" id="prevButton" disabled>
+            <span class="nav-icon">‹</span>
+        </button>
+        <button class="nav-button nav-next" id="nextButton">
+            <span class="nav-icon">›</span>
+        </button>
+
+        <!-- 底部控制 -->
+        <div class="bottom-controls">
+            <button class="control-button" id="prevBottomButton" disabled>
+                <span class="control-icon">‹</span>
+                <span class="control-text">上一页</span>
+            </button>
+            <div class="slide-counter">
+                <span id="currentSlide">1</span> / <span id="totalSlides">8</span>
+            </div>
+            <button class="control-button" id="nextBottomButton">
+                <span class="control-text">下一页</span>
+                <span class="control-icon">›</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

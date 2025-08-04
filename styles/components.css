@@ -1,0 +1,530 @@
+/* 苹果风格PPT - 组件样式库 */
+
+/* 设计原则页面 */
+.principle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-large);
+    width: 100%;
+    max-width: 900px;
+    margin-top: var(--spacing-large);
+}
+
+.principle-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: var(--border-standard) solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-large);
+    padding: calc(var(--spacing-large) + var(--spacing-medium));
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.principle-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+}
+
+.principle-icon {
+    font-size: 48px;
+    margin-bottom: var(--spacing-medium);
+    display: block;
+}
+
+.principle-card h3 {
+    font-size: calc(var(--body-size) + 2px);
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-small);
+}
+
+.principle-card p {
+    font-size: var(--caption-size);
+    color: var(--secondary-text);
+    line-height: 1.4;
+}
+
+/* 配色系统页面 */
+.color-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-large) + var(--spacing-small));
+    width: 100%;
+    max-width: 800px;
+    margin-top: var(--spacing-large);
+}
+
+.color-group h3 {
+    font-size: calc(var(--body-size) + 2px);
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-medium);
+    text-align: center;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: calc(var(--spacing-large) + var(--spacing-small));
+    flex-wrap: wrap;
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-small);
+}
+
+.color-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: var(--border-standard) solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-light);
+}
+
+.color-item span {
+    font-size: var(--caption-size);
+    color: var(--secondary-text);
+    font-weight: 500;
+}
+
+/* 字体系统页面 */
+.typography-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-large) + var(--spacing-small));
+    width: 100%;
+    max-width: 800px;
+    margin-top: var(--spacing-large);
+}
+
+.typography-item {
+    padding: var(--spacing-large);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--border-standard) solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-medium);
+    text-align: left;
+}
+
+.text-sample {
+    margin-bottom: var(--spacing-small);
+    color: var(--primary-text);
+}
+
+.main-title-sample {
+    font-size: var(--title-size);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.slide-title-sample {
+    font-size: var(--slide-title-size);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.subtitle-sample {
+    font-size: var(--subtitle-size);
+    font-weight: 600;
+}
+
+.body-sample {
+    font-size: var(--body-size);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.text-info {
+    font-size: var(--caption-size);
+    color: var(--secondary-text);
+    font-weight: 400;
+}
+
+/* 组件展示页面 */
+.components-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-large) * 2);
+    width: 100%;
+    max-width: 800px;
+    margin-top: var(--spacing-large);
+}
+
+.component-group {
+    text-align: center;
+}
+
+.component-group h3 {
+    font-size: calc(var(--body-size) + 2px);
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-large);
+}
+
+/* 苹果风格按钮组件 */
+.button-showcase {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-large);
+    flex-wrap: wrap;
+}
+
+.apple-button {
+    padding: var(--spacing-medium) calc(var(--spacing-large) + var(--spacing-small));
+    border: var(--border-standard) solid transparent;
+    border-radius: var(--radius-pill);
+    font-size: var(--caption-size);
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-width: 120px;
+}
+
+.apple-button.primary {
+    background: var(--accent-color);
+    color: var(--primary-text);
+}
+
+.apple-button.primary:hover {
+    background: #005bb5;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.apple-button.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-text);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.apple-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.apple-button.outline {
+    background: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.apple-button.outline:hover {
+    background: var(--accent-color);
+    color: var(--primary-text);
+    transform: translateY(-1px);
+}
+
+/* 信息框组件 - 严格遵循4px边框宽度 */
+.info-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    max-width: 80%; /* 统一最大宽度 */
+    margin: 0 auto;
+}
+
+.info-box {
+    padding: var(--padding-card);
+    border-radius: var(--radius-medium);
+    font-size: var(--caption-size);
+    line-height: 1.4;
+    border-left: var(--border-info) solid; /* 统一4px边框宽度 */
+    background: rgba(255, 255, 255, 0.05);
+    max-width: 100%; /* 确保宽度一致性 */
+    box-sizing: border-box; /* 确保边框包含在宽度内 */
+}
+
+.info-box.info {
+    border-left-color: var(--info-color);
+    background: rgba(0, 113, 227, 0.1);
+}
+
+.info-box.success {
+    border-left-color: var(--success-color);
+    background: rgba(52, 199, 89, 0.1);
+}
+
+.info-box.warning {
+    border-left-color: var(--warning-color);
+    background: rgba(255, 149, 0, 0.1);
+}
+
+.info-box.error {
+    border-left-color: var(--error-color);
+    background: rgba(255, 59, 48, 0.1);
+}
+
+/* 图片展示页面 */
+.image-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-large);
+    width: 100%;
+    margin-top: var(--spacing-large);
+}
+
+.image-container {
+    max-width: 85%; /* 统一图片最大宽度 */
+    max-height: 60vh;
+    border-radius: var(--radius-large);
+    overflow: hidden;
+    box-shadow: var(--shadow-heavy);
+}
+
+.showcase-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.image-caption {
+    font-size: var(--body-size);
+    color: var(--secondary-text);
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* 布局系统页面 */
+.layout-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-large);
+    width: 100%;
+    max-width: 900px;
+    margin-top: var(--spacing-large);
+}
+
+.layout-item {
+    text-align: center;
+}
+
+.layout-item h3 {
+    font-size: calc(var(--body-size) + 2px);
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: var(--spacing-medium);
+}
+
+.layout-demo {
+    background: rgba(255, 255, 255, 0.05);
+    border: var(--border-standard) solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-medium);
+    padding: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+}
+
+.aspect-ratio {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--body-size);
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+.spacing-demo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-small);
+}
+
+.spacing-large,
+.spacing-medium,
+.spacing-small {
+    background: var(--accent-color);
+    color: var(--primary-text);
+    text-align: center;
+    padding: var(--spacing-small);
+    border-radius: var(--radius-small);
+    font-size: var(--caption-size);
+    font-weight: 500;
+}
+
+.spacing-large {
+    height: calc(var(--spacing-large) + 10px);
+}
+
+.spacing-medium {
+    height: calc(var(--spacing-medium) + 10px);
+}
+
+.spacing-small {
+    height: calc(var(--spacing-small) + 10px);
+}
+
+.radius-demo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: var(--spacing-small);
+}
+
+.radius-large,
+.radius-medium,
+.radius-small {
+    width: 60px;
+    height: 40px;
+    background: var(--accent-color);
+    color: var(--primary-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.radius-large {
+    border-radius: var(--radius-large);
+}
+
+.radius-medium {
+    border-radius: var(--radius-medium);
+}
+
+.radius-small {
+    border-radius: var(--radius-small);
+}
+
+/* 检查清单页面 */
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-medium);
+    width: 100%;
+    max-width: 600px;
+    margin-top: var(--spacing-large);
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-medium);
+    padding: var(--spacing-medium) var(--spacing-large);
+    background: rgba(52, 199, 89, 0.1);
+    border: var(--border-standard) solid rgba(52, 199, 89, 0.3);
+    border-radius: var(--radius-medium);
+    transition: all 0.2s ease;
+}
+
+.checklist-item:hover {
+    background: rgba(52, 199, 89, 0.15);
+}
+
+.check-icon {
+    font-size: var(--body-size);
+    flex-shrink: 0;
+}
+
+.check-text {
+    font-size: var(--caption-size);
+    color: var(--primary-text);
+    font-weight: 400;
+}
+
+/* 响应式组件调整 */
+@media (max-width: 1024px) {
+    .principle-grid,
+    .layout-showcase {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-medium);
+    }
+    
+    .color-palette {
+        gap: var(--spacing-medium);
+    }
+    
+    .button-showcase {
+        gap: var(--spacing-medium);
+    }
+    
+    .info-boxes {
+        max-width: 90%;
+    }
+    
+    .image-container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .principle-grid,
+    .layout-showcase {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-medium);
+    }
+    
+    .color-showcase {
+        gap: var(--spacing-large);
+    }
+    
+    .color-palette {
+        gap: var(--spacing-medium);
+        justify-content: center;
+    }
+    
+    .color-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .button-showcase {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-medium);
+    }
+    
+    .apple-button {
+        min-width: 150px;
+    }
+    
+    .info-boxes {
+        max-width: 95%;
+    }
+    
+    .image-container {
+        max-width: 95%;
+    }
+    
+    .components-showcase {
+        gap: var(--spacing-large);
+    }
+}
+
+@media (max-width: 480px) {
+    .color-palette {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .typography-item {
+        padding: var(--spacing-medium);
+    }
+    
+    .main-title-sample {
+        font-size: calc(var(--title-size) * 0.7);
+    }
+    
+    .slide-title-sample {
+        font-size: calc(var(--slide-title-size) * 0.8);
+    }
+    
+    .radius-demo {
+        flex-direction: column;
+        gap: var(--spacing-medium);
+    }
+    
+    .spacing-demo {
+        gap: var(--spacing-medium);
+    }
+}
