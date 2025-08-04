@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人工智能发展机遇与挑战 - 苹果风格PPT</title>
+    <link rel="stylesheet" href="apple-ppt-components.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+            background: #f5f5f7;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ppt-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-container {
+            width: 90vw;
+            height: 50.625vw;
+            max-width: 1280px;
+            max-height: 720px;
+            position: relative;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            padding: 40px 30px 60px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-title {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #ccc;
+        }
+
+        .content-title {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .slide-content {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.5;
+            text-align: center;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .slide-description {
+            font-size: 16px;
+            font-weight: 300;
+            color: #ccc;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-left: 4px solid #0071e3;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            max-width: 80%;
+            width: 100%;
+        }
+
+        .info-box.warning {
+            border-left-color: #FF9500;
+        }
+
+        .info-box.success {
+            border-left-color: #34C759;
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            padding: 12px 24px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: #0071e3;
+            border-color: #0071e3;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+        }
+
+        .slide-image {
+            max-width: 85%;
+            max-height: 60vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            margin: 20px 0;
+        }
+
+        .slide-list {
+            list-style: none;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .slide-list li {
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.5;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .slide-list li::before {
+            content: "•";
+            color: #0071e3;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .page-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .indicator-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .indicator-dot.active {
+            width: 20px;
+            border-radius: 3px;
+            background: #0071e3;
+        }
+
+        .nav-button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .nav-button:hover {
+            background: #0071e3;
+            transform: scale(1.1);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-button.prev {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-button.next {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-button.bottom-prev {
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-120px);
+        }
+
+        .nav-button.bottom-next {
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(70px);
+        }
+
+        .keyboard-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #ccc;
+            opacity: 0.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 80%;
+            margin: 20px auto;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #0071e3;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .comparison-table {
+            width: 100%;
+            max-width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .comparison-table th {
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+            color: #0071e3;
+        }
+
+        @media (max-width: 768px) {
+            .slide-container {
+                width: 95vw;
+                height: 53.4375vw;
+            }
+            
+            .slide-title {
+                font-size: 36px;
+            }
+            
+            .content-title {
+                font-size: 28px;
+            }
+            
+            .slide-content {
+                font-size: 16px;
+            }
+            
+            .nav-button {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ppt-container">
+        <div class="slide-container">
+            <!-- 幻灯片1：标题页 -->
+            <div class="slide active" data-slide="1">
+                <h1 class="slide-title">人工智能发展</h1>
+                <p class="slide-subtitle">机遇与挑战的深度解析</p>
+                <div class="info-box">
+                    <p class="slide-content">AI技术正深刻重塑人类社会，带来前所未有的机遇与挑战</p>
+                </div>
+                <div style="margin-top: 30px;">
+                    <span class="btn">2024年最新分析</span>
+                </div>
+            </div>
+
+            <!-- 幻灯片2：AI发展现状 -->
+            <div class="slide" data-slide="2">
+                <h2 class="content-title">AI发展现状</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">$500B+</div>
+                        <div class="stat-label">全球AI市场规模</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">企业AI采用率</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2.5B</div>
+                        <div class="stat-label">AI用户数量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">工作效率提升</div>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <p class="slide-description">AI技术已渗透到各个行业，成为推动社会进步的核心力量</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片3：重大机遇 -->
+            <div class="slide" data-slide="3">
+                <h2 class="content-title">AI带来的重大机遇</h2>
+                <ul class="slide-list">
+                    <li><strong>医疗诊断革命：</strong>AI辅助诊断系统提高准确率至95%以上</li>
+                    <li><strong>生产效率提升：</strong>自动化技术节省40%的人力成本</li>
+                    <li><strong>科学研究突破：</strong>AI加速药物研发周期缩短60%</li>
+                    <li><strong>个性化服务：</strong>智能推荐系统提升用户体验300%</li>
+                    <li><strong>全球问题解决：</strong>气候变化、疾病预测等复杂挑战</li>
+                </ul>
+                <div class="info-box success">
+                    <p>AI技术正在创造前所未有的价值，推动人类文明向前发展</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片4：就业冲击 -->
+            <div class="slide" data-slide="4">
+                <h2 class="content-title">就业冲击与社会不平等</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>影响领域</th>
+                                <th>预计影响</th>
+                                <th>时间周期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>制造业岗位</td>
+                                <td>减少30-50%</td>
+                                <td>5-10年</td>
+                            </tr>
+                            <tr>
+                                <td>客服行业</td>
+                                <td>减少60-80%</td>
+                                <td>3-5年</td>
+                            </tr>
+                            <tr>
+                                <td>运输物流</td>
+                                <td>减少40-60%</td>
+                                <td>8-15年</td>
+                            </tr>
+                            <tr>
+                                <td>金融服务</td>
+                                <td>减少20-40%</td>
+                                <td>5-8年</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="info-box warning">
+                    <p>需要建立完善的社会保障体系和职业转型支持机制</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片5：伦理挑战 -->
+            <div class="slide" data-slide="5">
+                <h2 class="content-title">伦理困境与道德挑战</h2>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 80%;">
+                    <div class="info-box">
+                        <strong>算法偏见</strong><br>
+                        训练数据中的历史偏见导致歧视性决策
+                    </div>
+                    <div class="info-box warning">
+                        <strong>隐私威胁</strong><br>
+                        AI系统深度挖掘个人数据威胁隐私保护
+                    </div>
+                    <div class="info-box">
+                        <strong>深度伪造</strong><br>
+                        虚假信息传播破坏社会信任基础
+                    </div>
+                    <div class="info-box warning">
+                        <strong>自主武器</strong><br>
+                        AI军备竞赛加剧国际安全风险
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片6：可控性问题 -->
+            <div class="slide" data-slide="6">
+                <h2 class="content-title">可控性与透明度问题</h2>
+                <ul class="slide-list">
+                    <li><strong>"黑箱"问题：</strong>深度学习决策过程难以解释和理解</li>
+                    <li><strong>可解释性缺失：</strong>AI系统无法提供决策的合理解释</li>
+                    <li><strong>监管困难：</strong>不透明的决策过程使有效监管变得困难</li>
+                    <li><strong>系统稳定性：</strong>AI系统可能产生不可预期的行为</li>
+                    <li><strong>安全漏洞：</strong>AI系统可能被恶意攻击或操纵</li>
+                </ul>
+                <div class="info-box">
+                    <p>需要建立AI系统的可解释性和可控性标准</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片7：治理框架 -->
+            <div class="slide" data-slide="7">
+                <h2 class="content-title">多维度治理框架</h2>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 80%;">
+                    <div class="info-box">
+                        <strong>技术治理</strong><br>
+                        • 技术标准制定<br>
+                        • 算法审计<br>
+                        • 技术伦理设计
+                    </div>
+                    <div class="info-box">
+                        <strong>法律监管</strong><br>
+                        • 立法完善<br>
+                        • 责任框架<br>
+                        • 国际协调
+                    </div>
+                    <div class="info-box">
+                        <strong>政策引导</strong><br>
+                        • 产业政策<br>
+                        • 人才培养<br>
+                        • 社会保障
+                    </div>
+                    <div class="info-box">
+                        <strong>伦理规范</strong><br>
+                        • 伦理准则<br>
+                        • 多方参与<br>
+                        • 持续评估
+                    </div>
+                </div>
+            </div>
+
+            <!-- 幻灯片8：未来展望 -->
+            <div class="slide" data-slide="8">
+                <h2 class="content-title">未来展望与建议</h2>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; max-width: 80%;">
+                    <div class="info-box">
+                        <strong>平衡发展策略</strong><br>
+                        技术与社会并重，效率与公平兼顾
+                    </div>
+                    <div class="info-box">
+                        <strong>国际合作</strong><br>
+                        技术标准协调，伦理共识构建
+                    </div>
+                    <div class="info-box">
+                        <strong>公众参与</strong><br>
+                        科普教育，参与机制，透明度提升
+                    </div>
+                </div>
+                <div class="info-box success">
+                    <p>AI发展需要全社会的共同努力，确保技术真正服务于人类福祉</p>
+                </div>
+            </div>
+
+            <!-- 幻灯片9：结论 -->
+            <div class="slide" data-slide="9">
+                <h1 class="slide-title">结论</h1>
+                <p class="slide-subtitle">驾驭AI这把"双刃剑"</p>
+                <div class="info-box">
+                    <p class="slide-content">AI的发展绝非单纯的技术问题，而是需要技术、伦理、法律、政策等多方协同治理的系统工程</p>
+                </div>
+                <div style="margin-top: 30px;">
+                    <button class="btn btn-primary">开始行动</button>
+                    <button class="btn">了解更多</button>
+                </div>
+            </div>
+
+            <!-- 页码指示器 -->
+            <div class="page-indicator">
+                <div class="indicator-dot active" data-slide="1"></div>
+                <div class="indicator-dot" data-slide="2"></div>
+                <div class="indicator-dot" data-slide="3"></div>
+                <div class="indicator-dot" data-slide="4"></div>
+                <div class="indicator-dot" data-slide="5"></div>
+                <div class="indicator-dot" data-slide="6"></div>
+                <div class="indicator-dot" data-slide="7"></div>
+                <div class="indicator-dot" data-slide="8"></div>
+                <div class="indicator-dot" data-slide="9"></div>
+            </div>
+        </div>
+
+        <!-- 外部翻页按钮 -->
+        <button class="nav-button prev" id="prevBtn">‹</button>
+        <button class="nav-button next" id="nextBtn">›</button>
+        <button class="nav-button bottom-prev" id="bottomPrevBtn">‹</button>
+        <button class="nav-button bottom-next" id="bottomNextBtn">›</button>
+
+        <!-- 键盘导航提示 -->
+        <div class="keyboard-hint">
+            ← → 翻页 | 空格 播放
+        </div>
+    </div>
+
+    <script>
+        class AppleStylePPT {
+            constructor() {
+                this.currentSlide = 1;
+                this.totalSlides = 9;
+                this.isPlaying = false;
+                this.autoPlayInterval = null;
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.updateNavigation();
+            }
+
+            bindEvents() {
+                // 翻页按钮事件
+                document.getElementById('prevBtn').addEventListener('click', () => this.prevSlide());
+                document.getElementById('nextBtn').addEventListener('click', () => this.nextSlide());
+                document.getElementById('bottomPrevBtn').addEventListener('click', () => this.prevSlide());
+                document.getElementById('bottomNextBtn').addEventListener('click', () => this.nextSlide());
+
+                // 指示器点击事件
+                document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                    dot.addEventListener('click', () => this.goToSlide(index + 1));
+                });
+
+                // 键盘事件
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.prevSlide();
+                            break;
+                        case 'ArrowRight':
+                        case ' ':
+                            e.preventDefault();
+                            this.nextSlide();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            this.goToSlide(1);
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            this.goToSlide(this.totalSlides);
+                            break;
+                    }
+                });
+
+                // 触摸事件支持
+                let startX = 0;
+                let endX = 0;
+
+                document.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                document.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    this.handleSwipe();
+                });
+
+                // 鼠标滚轮事件
+                document.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    if (e.deltaY > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }, { passive: false });
+            }
+
+            handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.prevSlide();
+                    }
+                }
+            }
+
+            goToSlide(slideNumber) {
+                if (slideNumber < 1 || slideNumber > this.totalSlides) return;
+
+                // 隐藏当前幻灯片
+                document.querySelector(`.slide[data-slide="${this.currentSlide}"]`).classList.remove('active');
+                
+                // 显示目标幻灯片
+                document.querySelector(`.slide[data-slide="${slideNumber}"]`).classList.add('active');
+                
+                // 更新指示器
+                document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index + 1 === slideNumber);
+                });
+
+                this.currentSlide = slideNumber;
+                this.updateNavigation();
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 1) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            updateNavigation() {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const bottomPrevBtn = document.getElementById('bottomPrevBtn');
+                const bottomNextBtn = document.getElementById('bottomNextBtn');
+
+                // 更新按钮状态
+                prevBtn.disabled = this.currentSlide === 1;
+                nextBtn.disabled = this.currentSlide === this.totalSlides;
+                bottomPrevBtn.disabled = this.currentSlide === 1;
+                bottomNextBtn.disabled = this.currentSlide === this.totalSlides;
+            }
+        }
+
+        // 初始化PPT
+        document.addEventListener('DOMContentLoaded', () => {
+            new AppleStylePPT();
+        });
+    </script>
+</body>
+</html>
